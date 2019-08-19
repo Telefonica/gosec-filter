@@ -1,0 +1,108 @@
+Results:
+
+Golang errors in file: [singleton]:
+
+  > [line 0 : column 0] - loading files from package "singleton": go [list -f {{context.GOARCH}} {{context.Compiler}} -- unsafe]: exit status 1: go: malformed go.sum:
+/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/go.sum:40: wrong number of fields 2
+
+
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/dm.go:27] - G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+  > DM_PARENTAL_CHILD_RULE_TOKEN    = `policy_niji_child`
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/dm.go:35] - G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+  > DM_PHISHING_RULE_MAIN_WL_TOKEN  = `AntiPhishMailWL`
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/dm.go:34] - G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+  > DM_PHISHING_RULE_WEB_WL_TOKEN   = `AntiPhishWebWL`
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/dm.go:30] - G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+  > DM_PHISHING_SKIP_RULE_TOKEN     = `phishing allow user`
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/dm.go:29] - G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+  > DM_MALWARE_RULE_TOKEN           = `policy_niji_malware`
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/statefulparser.go:129] - G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)
+  > os.Open(logFilePath)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/parser/parser-commons.go:260] - G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)
+  > os.Open(filename)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/mcafee-parser/mcafee-parser.go:59] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > os.Stderr.WriteString(logline + "\n")
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:356] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > m.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:364] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > m.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:373] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > m.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/curl-global-mw-daily-stats/curl-global-mw-daily-stats.go:35] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > w.WriteString(st)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/curl-global-mw-daily-stats/curl-global-mw-daily-stats.go:132] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > w.WriteString("Date,VirusName,Name,Type,Amount\n")
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/curl-global-mw-daily-stats/curl-global-mw-daily-stats.go:174] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > w.Flush()
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/curl-global-mw-daily-stats/curl-global-mw-daily-stats.go:182] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > e.AttachFile(outputFileName)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:346] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > m.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:338] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > m.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:288] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > conn_p.Close()
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/queuemgr.go:284] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > ch_p.Close()
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/janitor.go:300] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > saveCleanInfo(janitorUser)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/janitor.go:253] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > key.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/janitor/janitor.go:248] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > key.Ack(false)
+
+
+[/home/mlg/go/src/niji-statistics/src/awazza-statistic-be/cmd/awazza-st-be/awazza-st-be.go:82] - G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)
+  > pprof.StartCPUProfile(f)
+
+
+Summary:
+   Files: 36
+   Lines: 10130
+   Nosec: 0
+  Issues: 23
+
