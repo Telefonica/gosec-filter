@@ -25,6 +25,7 @@ install:
 	mkdir -p /opt/$(APP)/examples
 	cp -a $(TOP)/cmd/* /opt/$(APP)/bin
 	cp -a $(TOP)/examples/* /opt/$(APP)/examples
+	chmod +x /opt/$(APP)/bin/$(APP)
 	cd /usr/bin; [ -s gsf ] || ln -s /opt/gsf/bin/gsf
 	$(info) "done"
 

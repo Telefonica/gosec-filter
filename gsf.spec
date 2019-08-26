@@ -11,6 +11,7 @@ License:        Proprietary
 Group:          System Environment/Base
 URL:            http://www.telefonica.com
 Source0:        %{name}-%{version}.tgz
+Requires:       python >= 2.7
 
 %define userid root
 
@@ -42,6 +43,7 @@ Filter gosec reports (see https://github.com/securego/gosec) when output in txt 
 
 %post
 # HACK: beego needs conf directory lives in the same dir as app executable
+chmod +x /opt/gsf/bin/gsf
 cd /usr/bin; [ -s gsf ] || ln -s /opt/gsf/bin/gsf
 
 echo ""
