@@ -12,6 +12,7 @@ This is a filter for gosec (https://github.com/securego/gosec) reports
     sudo rpm -e gsf-version-release.rpm
 
 ## On Debian platforms:
+**Requires alien to build .deb file**
 ### To build package:
     make deb
 ### To install:
