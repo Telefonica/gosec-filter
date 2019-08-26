@@ -13,6 +13,12 @@ This is a filter for gosec (https://github.com/securego/gosec) reports.
 
 **Requires python 2.7 or higher to be executed and rpmbuild to be built.**
 
+## Installing without packaging:
+### Install
+    sudo make install
+### Uninstall
+    sudo make uninstall
+    
 ## On CentOS or Red Hat platforms:
 ### To build package: 
     make rpm
