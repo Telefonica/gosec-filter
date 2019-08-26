@@ -7,6 +7,34 @@ EXTENSION := $(shell echo ${BRANCH} | tr "/" "_")
 ARCH      := x86_64
 TMP       := $(TOP)/tmp
 
+.PHONY: sdist \
+	install \
+	uninstall \
+	rpm \
+	deb \
+	clean
+
+define helptxt
+
+gsf is GoSec Filter
+
+usage: make <command>
+
+commands:
+    sdist     - Creates a .tgz distribution of the package
+    install   - Installs without packaging
+    uninstall - Uninstalls without updating packaging DBs
+    rpm       - Creates rpm package
+    deb       - Creates deb package
+    clean     - Removes generated files and directories
+
+endef
+export helptxt
+
+all: help
+
+help:
+	@echo "$$helptxt"
 
 sdist: 
 	$(info) "Creating source distribution..."
