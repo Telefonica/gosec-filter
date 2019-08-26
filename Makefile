@@ -11,9 +11,30 @@ TMP       := $(TOP)/tmp
 sdist: 
 	$(info) "Creating source distribution..."
 	mkdir -p $(TOP)/dist/$(APP)-$(VERSION)/bin
+	mkdir -p $(TOP)/dist/$(APP)-$(VERSION)/examples
 	cp -a $(TOP)/cmd/* $(TOP)/dist/$(APP)-$(VERSION)/bin
+	cp -a $(TOP)/examples/* $(TOP)/dist/$(APP)-$(VERSION)/examples
 	cd $(TOP)/dist; tar zcf $(APP)-$(VERSION).tgz $(APP)-$(VERSION)/*
 	@echo
+
+install:
+	$(info) "Installing without packaging..."
+	mkdir -p /opt
+	mkdir /opt/$(APP)
+	mkdir -p /opt/$(APP)/bin
+	mkdir -p /opt/$(APP)/examples
+	cp -a $(TOP)/cmd/* /opt/$(APP)/bin
+	cp -a $(TOP)/examples/* /opt/$(APP)/examples
+	cd /usr/bin; [ -s gsf ] || ln -s /opt/gsf/bin/gsf
+	$(info) "done"
+
+uninstall:
+	$(info) "Installing without packaging..."
+	cd /opt/$(APP) && rm -Rf bin && rm -Rf examples
+	cd /opt &&	rmdir $(APP)
+	cd / &&	rmdir opt || true
+	rm -f /usr/bin/gsf
+	$(info) "done"
 
 rpm: sdist
 	$(info) "Creating rpm packages..."
@@ -42,7 +63,7 @@ deb: rpm
 clean:
 	rm -rf dist/
 	rm -rf tmp/
-	rm *.rpm
-	rm *.deb
+	rm -f *.rpm
+	rm -f *.deb
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
