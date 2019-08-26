@@ -15,9 +15,9 @@ This is a filter for gosec (https://github.com/securego/gosec) reports.
 
 ## Installing without packaging:
 ### Install
-    make install
+    sudo make install
 ### Uninstall
-    make uninstall
+    sudo make uninstall
     
 ## On CentOS or Red Hat platforms:
 ### To build package: 
