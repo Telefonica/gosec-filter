@@ -93,7 +93,7 @@ def main():
                 print "FILTERED: %s" % (x) 
             filtered_warn_count = filtered_warn_count + 1
 
-    print "%d filtered security warning(s) of %d warning(s)" % (filtered_warn_count, warn_count)
+    print "%d filtered security warning(s) of %d warning(s) [filter has %d elements]" % (filtered_warn_count, warn_count, len(the_gosec_filter))
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
