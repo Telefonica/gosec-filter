@@ -5,9 +5,9 @@ class GosecWarning:
     code     = ""
     store    = False
     def __init__(self, location="", error="", code="", store=False):
-        if location != ""
+        if location != "" :
             tmp = location.split(":")
-            if len(tmp) != 2:
+            if len(tmp) != 2 :
                 raise Exception("invalid len for location split (%d) location(%s)", len(tmp), location)
             self.lfile    = tmp[0]
             self.line     = tmp[1]
