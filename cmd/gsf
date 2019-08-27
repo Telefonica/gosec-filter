@@ -10,6 +10,7 @@ Details:
     filter      the path to the filter python module
 """
 
+verbose = False
 fKey = "<filter>"
 rKey = "<report>"
 
@@ -47,7 +48,8 @@ def main():
         print ""
 	sys.exit(1)
 
-    print "opening "+reportName
+    print "Opening "+reportName
+    print "Will apply "+filterName+" filter"
     with open(reportName) as file: # Use file to refer to the file object
 
        data = file.readlines()
@@ -77,11 +79,17 @@ def main():
                       obj.code = line[4:].strip()
                       warnings.append(obj)
 
+    if verbose:
+        print "THE FILTER"
+        print the_gosec_filter
+
     for x in warnings:
         warn_count = warn_count + 1
         if x not in the_gosec_filter:
             print x
         else:
+            if verbose:
+                print "FILTERED: %s" % (x) 
             filtered_warn_count = filtered_warn_count + 1
 
     print "%d filtered security warning(s) of %d warning(s)" % (filtered_warn_count, warn_count)
