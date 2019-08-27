@@ -6,4 +6,6 @@ GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Seve
 GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", code="DM_PHISHING_SKIP_RULE_TOKEN     = `phishing allow user`"),\
 GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", code="DM_PHISHING_RULE_WEB_WL_TOKEN   = `AntiPhishWebWL`"),\
 GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", code="DM_PHISHING_RULE_MAIN_WL_TOKEN  = `AntiPhishMailWL`"),\
+GosecWarning(error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)", code="os.Open(filename)"),\
+GosecWarning(error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)", code="os.Open(logFilePath)"),\
 ])
