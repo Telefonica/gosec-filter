@@ -50,6 +50,7 @@ def main():
 
     print "Opening "+reportName
     print "Will apply "+filterName+" filter"
+    print ""
     with open(reportName) as file: # Use file to refer to the file object
 
        data = file.readlines()
