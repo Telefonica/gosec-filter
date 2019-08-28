@@ -3,7 +3,7 @@ from gosec_filter import GosecWarning
 the_gosec_filter = set([\
 GosecWarning(error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
              location="/home/contint/go/src/github.com/Telefonica/niji-blocking/src/niji-blocking/blocking.go:10",\
-             code="crypto/sha1"),\
+             code='"crypto/sha1"'),\
 GosecWarning(error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
              location="/home/contint/go/src/github.com/Telefonica/niji-blocking/src/niji-blocking/blocking.go:183",\
              code="md5.New()"),\
