@@ -49,6 +49,7 @@ def main():
 	sys.exit(1)
 
     print "Opening "+reportName
+    print ""
     print "Will apply "+filterName+" filter"
     print ""
     with open(reportName) as file: # Use file to refer to the file object
@@ -92,6 +93,10 @@ def main():
             if verbose:
                 print "FILTERED: %s" % (x) 
             filtered_warn_count = filtered_warn_count + 1
+
+    if filtered_warn_count == warn_count:
+        print "NO WARNINGS TO BE TAKEN INTO ACCOUNT THIS TIME."
+        print ""
 
     print "%d filtered security warning(s) of %d warning(s) [filter has %d elements]" % (filtered_warn_count, warn_count, len(the_gosec_filter))
 
