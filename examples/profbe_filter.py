@@ -69,5 +69,8 @@ GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/s
              code="hash.Write([]byte(rawQuery))"),\
 GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/commands/run_nt.go:49",\
              error="G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)",\
-             code="docopt.Parse(usage, argv, true, "", false)"),\
+             code="docopt.Parse(usage, argv, true, \"\", false)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/parlayx/parlayx.go:69",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(sms_file)"),\
 ])
