@@ -1,25 +1,73 @@
 from gosec_filter import GosecWarning
 
 the_gosec_filter = set([\
-GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)",\
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:27",\
-             code="DM_PARENTAL_CHILD_RULE_TOKEN    = `policy_niji_child`"),\
-GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)",
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:29",\
-             code="DM_MALWARE_RULE_TOKEN           = `policy_niji_malware`"),\
-GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", 
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:30",\
-             code="DM_PHISHING_SKIP_RULE_TOKEN     = `phishing allow user`"),\
-GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", 
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:34",\
-             code="DM_PHISHING_RULE_WEB_WL_TOKEN   = `AntiPhishWebWL`"),\
-GosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)", 
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:35",\
-             code="DM_PHISHING_RULE_MAIN_WL_TOKEN  = `AntiPhishMailWL`"),\
-GosecWarning(error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/parser-commons.go:260",\
-             code="os.Open(filename)"),\
-GosecWarning(error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)", 
-             location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/statefulparser.go:129",\
-             code="os.Open(logFilePath)"),\
+GosecWarning(error="G402: TLS InsecureSkipVerify set true. (Confidence: HIGH, Severity: HIGH)",\
+             location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/notifications/email.go:66",\
+             code="InsecureSkipVerify: true"),\
+GosecWarning(error="G402: TLS InsecureSkipVerify set true. (Confidence: HIGH, Severity: HIGH)",\
+             location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/notifications/notifications_commons.go:320",\
+             code="InsecureSkipVerify: true"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/aes/aestool/decrypt/decrypt_aes.go:102",\
+             error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="md5.New()"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/commands/run_nt.go:34",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(cfgFile)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/sms_pcm/sms_pcm.go:67",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(sms_file)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/config/config.go:1355",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="os.Open(fullPath)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/filters.go:12",\
+             error="G501: Blacklisted import crypto/md5: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/md5\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/aes/aestool/encrypt/encrypt_aes.go:66",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="os.Open(fileName)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/sso/sso.go:5",\
+             error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/sha1\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/email/email.go:64",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(emailFile)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/notifications/parlayx.go:150",\
+             error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="md5.Sum([]byte(p.Config.Id + p.Config.Password + timeStamp))"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/mobile_connect.go:16",\
+             error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/sha1\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/notifications/parlayx.go:14",\
+             error="G501: Blacklisted import crypto/md5: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/md5\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/commands/run_be.go:46",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(cfgFile)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/commands/run_be.go:37",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(cfgFile)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/aes/aestool/decrypt/decrypt_aes.go:56",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="os.Open(fileName)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/session.go:10",\
+             error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/sha1\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/aes/aestool/decrypt/decrypt_aes.go:9",\
+             error="G501: Blacklisted import crypto/md5: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/md5\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/smpp/smpp.go:171",\
+             error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
+             code="ioutil.ReadFile(sms_file)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/filters.go:204",\
+             error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="md5.New()"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/fiorix/go-smpp/smpp/transmitter.go:270",\
+             error="G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)",\
+             code="f.Set(pdufield.ValidityPeriod, convertValidity(sm.Validity))"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/sso/sso.go:53",\
+             error="G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)",\
+             code="hash.Write([]byte(rawQuery))"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/commands/run_nt.go:49",\
+             error="G104: Errors unhandled. (Confidence: HIGH, Severity: LOW)",\
+             code="docopt.Parse(usage, argv, true, "", false)"),\
 ])
