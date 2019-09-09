@@ -73,4 +73,13 @@ GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/s
 GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/tools/parlayx/parlayx.go:69",\
              error="G304: Potential file inclusion via variable (Confidence: HIGH, Severity: MEDIUM)",\
              code="ioutil.ReadFile(sms_file)"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/whitelist.go:4",\
+             error="G501: Blacklisted import crypto/md5: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"crypto/md5\""),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/whitelist.go:76",\
+             error="G202: SQL string concatenation (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"SELECT msisdn FROM profile WHERE \"+key"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/whitelist.go:589",\
+             error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
+             code="md5.New()"),\
 ])
