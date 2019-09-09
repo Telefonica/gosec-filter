@@ -82,4 +82,13 @@ GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/s
 GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/whitelist.go:589",\
              error="G401: Use of weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
              code="md5.New()"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/notifications/email.go:69",\
+             error="G402: TLS InsecureSkipVerify set true. (Confidence: HIGH, Severity: HIGH)",\
+             code="InsecureSkipVerify: true"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/fourth_platform.go:607",\
+             error="G202: SQL string concatenation (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"SELECT * FROM profile WHERE msisdn IN \"+params"),\
+GosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-profile/src/awazza-profile-be/api/v2/fourth_platform.go:614",\
+             error="G202: SQL string concatenation (Confidence: HIGH, Severity: MEDIUM)",\
+             code="\"UPDATE profile SET external_id = ? WHERE msisdn IN \"+params"),\
 ])
