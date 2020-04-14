@@ -38,10 +38,10 @@ class GosecWarning:
         #Note: we dont filter by location
         if self.fileSplitRoot != "":
             ret = compareGoProjectFiles(self.lfile, other.lfile, self.fileSplitRoot) and self.line == other.line and self.error == other.error and self.code == other.code
-            print compareGoProjectFiles(self.lfile, other.lfile, self.fileSplitRoot)
+            #print compareGoProjectFiles(self.lfile, other.lfile, self.fileSplitRoot)
         else:
             ret = compareGoProjectFiles(self.lfile, other.lfile, "/go/src/") and self.line == other.line and self.error == other.error and self.code == other.code
-            print compareGoProjectFiles(self.lfile, other.lfile, "/go/src/")
+            #print compareGoProjectFiles(self.lfile, other.lfile, "/go/src/")
 
         #print "fspr..." +  self.fileSplitRoot
         #print "self..." + self.lfile
