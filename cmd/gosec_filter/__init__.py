@@ -43,9 +43,9 @@ class GosecWarning:
             ret = compareGoProjectFiles(self.lfile, other.lfile, "/go/src/") and self.line == other.line and self.error == other.error and self.code == other.code
             print compareGoProjectFiles(self.lfile, other.lfile, "/go/src/")
 
-        print "fspr..." +  self.fileSplitRoot
-        print "self..." + self.lfile
-        print "other.." + other.lfile
+        #print "fspr..." +  self.fileSplitRoot
+        #print "self..." + self.lfile
+        #print "other.." + other.lfile
 
         return ret
 
