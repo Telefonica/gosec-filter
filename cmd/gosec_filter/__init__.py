@@ -16,6 +16,7 @@ def getRootPart(a, root):
 
 class GosecWarning:
     fileSplitRoot = ""
+    location = ""
     lfile    = ""
     line     = ""
     error    = ""
@@ -23,6 +24,7 @@ class GosecWarning:
     store    = False
     def __init__(self, location="", error="", code="", store=False, fileSplitRoot=""):
         if location != "" :
+            self.location = location
             self.fileSplitRoot = fileSplitRoot
             tmp = location.split(":")
             if len(tmp) != 2 :

@@ -1,17 +1,30 @@
 #!/usr/bin/env python
 """
 Usage:
-    gosec-filter [-h|--help] <report> <filter>
+    gen_profbe_filter [-h|--help] <report>
 
 Options:
     -h --help     Show this screen.
 Details:
-    report      the path to the GOSEC report in txt format
-    filter      the path to the filter python module
+    report      the path to the profile-be GOSEC report in txt format
+"""
+
+filterHeader = """
+from gosec_filter import ProfbeGosecWarning
+
+the_gosec_filter = set([\
+"""
+filterFooter = """
+])
+
+"""
+filterLine = """
+ProfbeGosecWarning(error="%s",
+             location="%s",
+             code="%s")
 """
 
 verbose = False
-fKey = "<filter>"
 rKey = "<report>"
 
 from gosec_filter import GosecWarning
@@ -36,22 +49,13 @@ def main():
     warnings = []
     args = docopt(__doc__)    
     #print args
-    filterName = args[fKey]
     reportName = args[rKey]
-    try:
-        filtr = imp.load_source('filter_definition', filterName)
-        the_gosec_filter = filtr.the_gosec_filter
-    except:
-	print "Can't import filter on Exception: "
-        print ""
-	traceback.print_exc()
-        print ""
-	sys.exit(1)
 
     print "Opening "+reportName
-    print ""
-    print "Will apply "+filterName+" filter"
-    print ""
+    print "-------------------------------------------------------------------------------------"
+
+    print filterHeader
+
     with open(reportName) as file: # Use file to refer to the file object
 
        data = file.readlines()
@@ -59,12 +63,12 @@ def main():
        count = 0
        warn_count = 0
        filtered_warn_count = 0
+       stored = 0
        obj = GosecWarning()
        for line in data:
           count = count + 1
-          #print count, IGNORE_FIRST_N_LINES
           if count > IGNORE_FIRST_N_LINES:
-              #print "PROCESSING>>"+line,
+              #print line,
               if line[0] == "[":
                   m = p.match(line)
                   #print line,
@@ -79,31 +83,14 @@ def main():
               elif line[:4] == "  > ":
                   #print "Code: %s" % (line[4:])
                   if obj.store:
+                      stored = stored + 1
                       obj.code = line[4:].strip()
                       warnings.append(obj)
-          else:
-              pass
-              #print "IGNORING>>"+line
+                      print filterLine % (obj.error ,obj.location, obj.code)
 
-
-    if verbose:
-        print "THE FILTER"
-        print the_gosec_filter
-
-    for x in warnings:
-        warn_count = warn_count + 1
-        if x not in the_gosec_filter:
-            print x
-        else:
-            if verbose:
-                print "FILTERED: %s" % (x) 
-            filtered_warn_count = filtered_warn_count + 1
-
-    if filtered_warn_count == warn_count:
-        print "NO WARNINGS TO BE TAKEN INTO ACCOUNT THIS TIME."
-        print ""
-
-    print "%d filtered security warning(s) of %d warning(s) [filter has %d elements]" % (filtered_warn_count, warn_count, len(the_gosec_filter))
+    print filterFooter
+    print "-------------------------------------------------------------------------------------"
+    print "%d issue(s) generated" % stored
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
