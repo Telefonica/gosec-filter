@@ -13,6 +13,7 @@ TMP       := $(TOP)/tmp
 	rpm \
 	deb \
 	upprof \
+	upblock \
 	clean
 
 define helptxt
@@ -22,13 +23,14 @@ gsf is GoSec Filter
 usage: make <command>
 
 commands:
-    sdist     - Creates a .tgz distribution of the package
-    install   - Installs without packaging
-    uninstall - Uninstalls without updating packaging DBs
-    rpm       - Creates rpm package
-    deb       - Creates deb package
-    clean     - Removes generated files and directories
-	upprof    - update profile-be filter with non filtered definitions in /tmp/gosec_report.txt
+	sdist      - Creates a .tgz distribution of the package
+	install    - Installs without packaging
+	uninstall  - Uninstalls without updating packaging DBs
+	rpm        - Creates rpm package
+	deb        - Creates deb package
+	clean      - Removes generated files and directories
+	upprof     - update profile-be filter with non filtered definitions in /tmp/gosec_report.txt
+	upblock    - update blocking filter with non filtered definitions in /tmp/gosec_report.txt
 
 endef
 export helptxt
@@ -80,15 +82,15 @@ rpm: sdist
 	mkdir -p $(TMP)/rpmbuild/SOURCES
 	cp $(TOP)/dist/$(APP)-$(VERSION).tgz $(TMP)/rpmbuild/SOURCES
 	rpmbuild -bb $(TOP)/$(APP).spec                          \
-             --define "extension $(EXTENSION)"               \
-             --define "version $(VERSION)"                   \
-             --define "release $(RELEASE)"                   \
-             --define "arch $(ARCH)"                         \
-             --define "_target_os linux"                     \
-             --define "_topdir $(TMP)/rpmbuild"              \
-             --define "buildroot $(TMP)/rpmbuild/BUILDROOT"  \
-             --define "_rootdir /opt/gsf"                    \
-             --buildroot=$(TMP)/rpmbuild/BUILDROOT
+			 --define "extension $(EXTENSION)"               \
+			 --define "version $(VERSION)"                   \
+			 --define "release $(RELEASE)"                   \
+			 --define "arch $(ARCH)"                         \
+			 --define "_target_os linux"                     \
+			 --define "_topdir $(TMP)/rpmbuild"              \
+			 --define "buildroot $(TMP)/rpmbuild/BUILDROOT"  \
+			 --define "_rootdir /opt/gsf"                    \
+			 --buildroot=$(TMP)/rpmbuild/BUILDROOT
 	mv $(TMP)/rpmbuild/RPMS/$(ARCH)/$(APP)-$(VERSION)-$(RELEASE).$(ARCH).rpm $(TOP)
 	@echo
 	$(info) "Created packages in $(TOP)/$(APP)-$(VERSION)-$(RELEASE).$(ARCH).rpm"
@@ -105,5 +107,8 @@ clean:
 
 upprof:
 	gen_profbe_filter /tmp/gosec_report.txt > $(TOP)/examples/profbe_filter.py
+
+upblock:
+	gen_blocking_filter /tmp/gosec_report.txt > $(TOP)/examples/blocking_filter.py
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
