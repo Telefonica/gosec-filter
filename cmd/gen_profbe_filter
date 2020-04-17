@@ -21,7 +21,7 @@ filterFooter = """
 filterLine = """
 ProfbeGosecWarning(error="%s",
              location="%s",
-             code="%s")
+             code="%s"),\
 """
 
 verbose = False
@@ -48,13 +48,12 @@ def main():
     p = re.compile(PATTERN)
     warnings = []
     args = docopt(__doc__)    
-    #print args
     reportName = args[rKey]
 
     sys.stderr.write("Opening "+reportName+"\n")
     sys.stderr.write("-------------------------------------------------------------------------------------\n")
 
-    print filterHeader
+    print filterHeader,
 
     with open(reportName) as file: # Use file to refer to the file object
 
@@ -86,9 +85,9 @@ def main():
                       stored = stored + 1
                       obj.code = line[4:].strip()
                       warnings.append(obj)
-                      print filterLine % (obj.error ,obj.location, obj.code)
+                      print filterLine % (obj.error ,obj.location, obj.code),
 
-    print filterFooter
+    print filterFooter,
     sys.stderr.write("-------------------------------------------------------------------------------------\n")
     sys.stderr.write(str(stored) + " issue(s) generated\n")
 
