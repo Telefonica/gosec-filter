@@ -19,9 +19,9 @@ filterFooter = """
 
 """
 filterLine = """
-ProfbeGosecWarning(error="%s",
-             location="%s",
-             code="%s"),\
+ProfbeGosecWarning(error='%s',
+             location='%s',
+             code=%s),\
 """
 
 verbose = False
@@ -85,7 +85,7 @@ def main():
                       stored = stored + 1
                       obj.code = line[4:].strip()
                       warnings.append(obj)
-                      print filterLine % (obj.error ,obj.location, obj.code),
+                      print filterLine % (obj.error ,obj.location, repr(obj.code)),
 
     print filterFooter,
     sys.stderr.write("-------------------------------------------------------------------------------------\n")

@@ -12,6 +12,7 @@ TMP       := $(TOP)/tmp
 	uninstall \
 	rpm \
 	deb \
+	upprof \
 	clean
 
 define helptxt
@@ -27,6 +28,7 @@ commands:
     rpm       - Creates rpm package
     deb       - Creates deb package
     clean     - Removes generated files and directories
+	upprof    - update profile-be filter with non filtered definitions in /tmp/gosec_report.txt
 
 endef
 export helptxt
@@ -95,5 +97,8 @@ clean:
 	rm -rf tmp/
 	rm -f *.rpm
 	rm -f *.deb
+
+upprof:
+	gen_profbe_filter /tmp/gosec_report.txt > $(TOP)/examples/profbe_filter.py
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
