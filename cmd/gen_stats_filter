@@ -10,7 +10,8 @@ Details:
 """
 
 filterHeader = """
-from gosec_filter import ProfbeGosecWarning
+from gosec_filter import StatsbeGosecWarning
+fileSplitRoot = StatsbeGosecWarning.fileSplitRoot
 
 the_gosec_filter = set([\
 """

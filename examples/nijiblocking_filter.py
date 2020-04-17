@@ -1,5 +1,7 @@
 from gosec_filter import BlockingGosecWarning
 
+fileSplitRoot = BlockingGosecWarning.fileSplitRoot
+
 the_gosec_filter = set([\
 BlockingGosecWarning(error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\
              location="/home/contint/go/src/github.com/Telefonica/niji-blocking/src/niji-blocking/blocking.go:10",\

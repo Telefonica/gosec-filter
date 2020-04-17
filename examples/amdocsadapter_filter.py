@@ -1,4 +1,5 @@
 from gosec_filter import AmdocsGosecWarning
+fileSplitRoot = AmdocsGosecWarning.fileSplitRoot
 
 the_gosec_filter = set([\
 AmdocsGosecWarning(error="G505: Blacklisted import crypto/sha1: weak cryptographic primitive (Confidence: HIGH, Severity: MEDIUM)",\

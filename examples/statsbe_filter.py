@@ -1,5 +1,7 @@
 from gosec_filter import StatsbeGosecWarning
 
+fileSplitRoot = StatsbeGosecWarning.fileSplitRoot
+
 the_gosec_filter = set([\
 StatsbeGosecWarning(error="G101: Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)",\
              location="/home/contint/go/src/github.com/Telefonica/niji-statistics/src/awazza-statistic-be/parser/dm.go:27",\

@@ -11,6 +11,7 @@ Details:
 
 filterHeader = """
 from gosec_filter import ProfbeGosecWarning
+fileSplitRoot = PorfbeGosecWarning.fileSplitRoot
 
 the_gosec_filter = set([\
 """

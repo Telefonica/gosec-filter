@@ -1,5 +1,6 @@
-
 from gosec_filter import ProfbeGosecWarning
+
+fileSplitRoot = ProfbeGosecWarning.fileSplitRoot
 
 the_gosec_filter = set([ 
 ProfbeGosecWarning(error='G402: TLS InsecureSkipVerify set true. (Confidence: HIGH, Severity: HIGH)',

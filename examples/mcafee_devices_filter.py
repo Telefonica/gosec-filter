@@ -1,4 +1,6 @@
-from gosec_filter import GosecWarning
+from gosec_filter import DevicesGosecWarning
+
+fileSplitRoot = DevicesGosecWarning.fileSplitRoot
 
 the_gosec_filter = set([\
 DevicesGosecWarning(location="/home/contint/go/src/github.com/Telefonica/niji-mcafee/avdevice/token.go:6",\

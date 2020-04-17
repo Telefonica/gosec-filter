@@ -9,9 +9,10 @@ def compareGoProjectFiles(a, b, root):
     return aa[1] == bb[1]
 
 def getRootPart(a, root):
+    #print "GETROOT(%s, %s)" % (a, root)
     aa = str.split(a, root)
     if len(aa) != 2:
-        return aa
+        return a
     return aa[1]
 
 class GosecWarning:
@@ -26,6 +27,7 @@ class GosecWarning:
         if location != "" :
             self.location = location
             self.fileSplitRoot = fileSplitRoot
+            #print "LOCATION "+location
             tmp = location.split(":")
             if len(tmp) != 2 :
                 raise Exception("invalid len for location split (%d) location(%s)", len(tmp), location)
@@ -54,26 +56,32 @@ class GosecWarning:
     def __hash__(self):
         #Note: we dont filter by whole location, just file, may have false positives, control number of filter hits vs filter definitions.
         #h = hash(self.error+self.code)
+        #print "HASH of lfile(%s) is done on %s" % (self.lfile, getRootPart(self.lfile, self.fileSplitRoot))
         #print "hash of \""+self.error+self.code+"\" is "+str(h)
         return hash(getRootPart(self.lfile, self.fileSplitRoot)+self.error+self.code)
 
 class ProfbeGosecWarning(GosecWarning):
+    fileSplitRoot = "/niji-profile/src/"
     def __init__(self, location="", error="", code="", store=False):
-        GosecWarning.__init__(self, location, error, code, store, "/niji-profile/src/")
+        GosecWarning.__init__(self, location, error, code, store, ProfbeGosecWarning.fileSplitRoot)
 
 class StatsbeGosecWarning(GosecWarning):
+    fileSplitRoot = "/niji-statistics/src/"
     def __init__(self, location="", error="", code="", store=False):
-        GosecWarning.__init__(self, location, error, code, store, "/niji-statistics/src/")
+        GosecWarning.__init__(self, location, error, code, store, StatsbeGosecWarning.fileSplitRoot)
 
 class AmdocsGosecWarning(GosecWarning):
+    fileSplitRoot =  "/niji-amdocsadapter/src/"
     def __init__(self, location="", error="", code="", store=False):
-        GosecWarning.__init__(self, location, error, code, store, "/niji-amdocsadapter/src/")
+        GosecWarning.__init__(self, location, error, code, store, AmdocsGosecWarning.fileSplitRoot)
 
 class DevicesGosecWarning(GosecWarning):
+    fileSplitRoot = "/niji-mcafee/avdevice/"
     def __init__(self, location="", error="", code="", store=False):
-        GosecWarning.__init__(self, location, error, code, store, "/niji-mcafee/avdevice/")
+        GosecWarning.__init__(self, location, error, code, store, DevicesGosecWarning.fileSplitRoot)
 
 class BlockingGosecWarning(GosecWarning):
+    fileSplitRoot = "/niji-blocking/src/"
     def __init__(self, location="", error="", code="", store=False):
-        GosecWarning.__init__(self, location, error, code, store, "/niji-blocking/src/")
+        GosecWarning.__init__(self, location, error, code, store, BlockingGosecWarning.fileSplitRoot)
 

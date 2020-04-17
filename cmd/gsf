@@ -41,6 +41,7 @@ def main():
     try:
         filtr = imp.load_source('filter_definition', filterName)
         the_gosec_filter = filtr.the_gosec_filter
+        fsp              = filtr.fileSplitRoot
     except:
 	print "Can't import filter on Exception: "
         print ""
@@ -70,7 +71,7 @@ def main():
                   #print line,
                   if m != None:
                       #print m.group(0)
-                      obj = GosecWarning(location=m.group(1),error=m.group(2),store=True,fileSplitRoot="/niji-profile/src/")
+                      obj = GosecWarning(location=m.group(1),error=m.group(2),store=True,fileSplitRoot=fsp)
                       #print "Location: " + m.group(1)
                       #print "Error:    " + m.group(2)
                   else:
