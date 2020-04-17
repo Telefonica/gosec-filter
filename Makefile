@@ -114,6 +114,6 @@ upblock:
 	gen_blocking_filter /tmp/gosec_report.txt > $(TOP)/examples/blocking_filter.py
 
 updev:
-	gen_devices_filter /tmp/gosec_report.txt > $(TOP)/examples/devices_filter.py
+	gen_devices_filter /tmp/gosec_report.txt > $(TOP)/examples/mcafee_devices_filter.py
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
