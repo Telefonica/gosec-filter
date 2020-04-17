@@ -14,6 +14,7 @@ TMP       := $(TOP)/tmp
 	deb \
 	upprof \
 	upblock \
+	updev \
 	clean
 
 define helptxt
@@ -31,6 +32,7 @@ commands:
 	clean      - Removes generated files and directories
 	upprof     - update profile-be filter with non filtered definitions in /tmp/gosec_report.txt
 	upblock    - update blocking filter with non filtered definitions in /tmp/gosec_report.txt
+	updev      - update niji devices filter with non filtered definitions in /tmp/gosec_report.txt
 
 endef
 export helptxt
@@ -110,5 +112,8 @@ upprof:
 
 upblock:
 	gen_blocking_filter /tmp/gosec_report.txt > $(TOP)/examples/blocking_filter.py
+
+updev:
+	gen_devices_filter /tmp/gosec_report.txt > $(TOP)/examples/devices_filter.py
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
