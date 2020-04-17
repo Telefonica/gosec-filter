@@ -92,6 +92,16 @@ def main():
         print the_gosec_filter
 
     for x in warnings:
+        """
+        print "************************************************"
+        print x, hash(x)
+        cp = the_gosec_filter
+        print x not in cp
+        print x not in the_gosec_filter
+        y = cp.pop()
+        print y, hash(y)
+        print "************************************************"
+        """
         warn_count = warn_count + 1
         if x not in the_gosec_filter:
             print x

@@ -2,17 +2,21 @@ def compareGoProjectFiles(a, b, root):
     aa = str.split(a, root)
     bb = str.split(b, root)
     if len(aa) != 2:
+        #print "COMPARE is False 1"
         return False
     elif len(bb) != 2:   
+        #print "COMPARE is False 2"
         return False
 
+    #print "COMPARE is " + str(a[1] == bb[1])
     return aa[1] == bb[1]
 
 def getRootPart(a, root):
-    #print "GETROOT(%s, %s)" % (a, root)
     aa = str.split(a, root)
     if len(aa) != 2:
+        #print "GETROOT(%s, %s) == %s" % (a, root, a) 
         return a
+    #print "GETROOT(%s, %s) == %s" % (a, root, aa[1]) 
     return aa[1]
 
 class GosecWarning:
@@ -55,10 +59,9 @@ class GosecWarning:
 
     def __hash__(self):
         #Note: we dont filter by whole location, just file, may have false positives, control number of filter hits vs filter definitions.
-        #h = hash(self.error+self.code)
-        #print "HASH of lfile(%s) is done on %s" % (self.lfile, getRootPart(self.lfile, self.fileSplitRoot))
-        #print "hash of \""+self.error+self.code+"\" is "+str(h)
-        return hash(getRootPart(self.lfile, self.fileSplitRoot)+self.error+self.code)
+        h = hash(getRootPart(self.lfile, self.fileSplitRoot)+str(self.line)+self.error+self.code)
+        #print "HASH of lfile(%s) is done on %s == %d" % (self.lfile, getRootPart(self.lfile, self.fileSplitRoot)+self.error+self.code, h)
+        return h
 
 class ProfbeGosecWarning(GosecWarning):
     fileSplitRoot = "/niji-profile/src/"

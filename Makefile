@@ -15,6 +15,7 @@ TMP       := $(TOP)/tmp
 	upprof \
 	upblock \
 	updev \
+	upst \
 	clean
 
 define helptxt
@@ -33,6 +34,7 @@ commands:
 	upprof     - update profile-be filter with non filtered definitions in /tmp/gosec_report.txt
 	upblock    - update blocking filter with non filtered definitions in /tmp/gosec_report.txt
 	updev      - update niji devices filter with non filtered definitions in /tmp/gosec_report.txt
+	upst       - update statistics filter with non filtered definitions in /tmp/gosec_report.txt
 
 endef
 export helptxt
@@ -115,5 +117,8 @@ upblock:
 
 updev:
 	gen_devices_filter /tmp/gosec_report.txt > $(TOP)/examples/mcafee_devices_filter.py
+
+upst:
+	gen_stats_filter /tmp/gosec_report.txt > $(TOP)/examples/statsbe_filter.py
 
 info := @printf "\033[32;01m >>> %s\033[0m\n"
