@@ -61,3 +61,19 @@ class ProfbeGosecWarning(GosecWarning):
     def __init__(self, location="", error="", code="", store=False):
         GosecWarning.__init__(self, location, error, code, store, "/niji-profile/src/")
 
+class StatsbeGosecWarning(GosecWarning):
+    def __init__(self, location="", error="", code="", store=False):
+        GosecWarning.__init__(self, location, error, code, store, "/niji-statistics/src/")
+
+class AmdocsGosecWarning(GosecWarning):
+    def __init__(self, location="", error="", code="", store=False):
+        GosecWarning.__init__(self, location, error, code, store, "/niji-amdocsadapter/src/")
+
+class DevicesGosecWarning(GosecWarning):
+    def __init__(self, location="", error="", code="", store=False):
+        GosecWarning.__init__(self, location, error, code, store, "/niji-mcafee/avdevice/")
+
+class BlockingGosecWarning(GosecWarning):
+    def __init__(self, location="", error="", code="", store=False):
+        GosecWarning.__init__(self, location, error, code, store, "/niji-blocking/src/")
+

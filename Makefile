@@ -57,7 +57,12 @@ install:
 	cp -a $(TOP)/examples/* /opt/$(APP)/examples
 	chmod +x /opt/$(APP)/bin/$(APP)
 	cd /usr/bin; [ -s gsf ] || ln -s /opt/gsf/bin/gsf
+	cd /usr/bin; [ -s gen_amdocs_filter ] || ln -s /opt/gsf/bin/gen_amdocs_filter
+	cd /usr/bin; [ -s gen_blocking_filter ] || ln -s /opt/gsf/bin/gen_blocking_filter
+	cd /usr/bin; [ -s gen_devices_filter ] || ln -s /opt/gsf/bin/gen_devices_filter
 	cd /usr/bin; [ -s gen_profbe_filter ] || ln -s /opt/gsf/bin/gen_profbe_filter
+	cd /usr/bin; [ -s gen_stats_filter ] || ln -s /opt/gsf/bin/gen_stats_filter
+
 	$(info) "done"
 
 uninstall:
