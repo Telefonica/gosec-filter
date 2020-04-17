@@ -51,8 +51,8 @@ def main():
     #print args
     reportName = args[rKey]
 
-    print "Opening "+reportName
-    print "-------------------------------------------------------------------------------------"
+    sys.stderr.write("Opening "+reportName+"\n")
+    sys.stderr.write("-------------------------------------------------------------------------------------\n")
 
     print filterHeader
 
@@ -89,8 +89,8 @@ def main():
                       print filterLine % (obj.error ,obj.location, obj.code)
 
     print filterFooter
-    print "-------------------------------------------------------------------------------------"
-    print "%d issue(s) generated" % stored
+    sys.stderr.write("-------------------------------------------------------------------------------------\n")
+    sys.stderr.write(str(stored) + " issue(s) generated\n")
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
