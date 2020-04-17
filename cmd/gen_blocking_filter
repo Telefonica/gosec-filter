@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+"""
+Usage:
+    gen_blocking_filter [-h|--help] <report>
+
+Options:
+    -h --help     Show this screen.
+Details:
+    report      the path to the profile-be GOSEC report in txt format
+"""
+
+filterHeader = """
+from gosec_filter import ProfbeGosecWarning
+
+the_gosec_filter = set([\
+"""
+filterFooter = """
+])
+
+"""
+filterLine = """
+BlockingGosecWarning(error='%s',
+             location='%s',
+             code=%s),\
+"""
+
+verbose = False
+rKey = "<report>"
+
+from gosec_filter import GosecWarning
+from docopt import docopt
+import re
+import imp
+import sys
+import traceback
+
+def check_python_version():
+    if sys.version_info[0] != 2 or sys.version_info[1] < 7:
+        print("This script requires Python version 2.7")
+        sys.exit(1)
+
+def main():
+    IGNORE_FIRST_N_LINES = 3
+    PATTERN = "\[([^\]]+)\] - (.+)"
+
+    check_python_version()
+
+    p = re.compile(PATTERN)
+    warnings = []
+    args = docopt(__doc__)    
+    reportName = args[rKey]
+
+    sys.stderr.write("Opening "+reportName+"\n")
+    sys.stderr.write("-------------------------------------------------------------------------------------\n")
+
+    print filterHeader,
+
+    with open(reportName) as file: # Use file to refer to the file object
+
+       data = file.readlines()
+
+       count = 0
+       warn_count = 0
+       filtered_warn_count = 0
+       stored = 0
+       obj = GosecWarning()
+       for line in data:
+          count = count + 1
+          if count > IGNORE_FIRST_N_LINES:
+              #print line,
+              if line[0] == "[":
+                  m = p.match(line)
+                  #print line,
+                  if m != None:
+                      #print m.group(0)
+                      obj = GosecWarning(location=m.group(1),error=m.group(2),store=True,fileSplitRoot="/niji-profile/src/")
+                      #print "Location: " + m.group(1)
+                      #print "Error:    " + m.group(2)
+                  else:
+                      #print "No match"
+                      pass
+              elif line[:4] == "  > ":
+                  #print "Code: %s" % (line[4:])
+                  if obj.store:
+                      stored = stored + 1
+                      obj.code = line[4:].strip()
+                      warnings.append(obj)
+                      print filterLine % (obj.error ,obj.location, repr(obj.code)),
+
+    print filterFooter,
+    sys.stderr.write("-------------------------------------------------------------------------------------\n")
+    sys.stderr.write(str(stored) + " issue(s) generated\n")
+
+if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        sys.argv.append('-h')
+    sys.exit(main())
